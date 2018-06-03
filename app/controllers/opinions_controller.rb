@@ -25,6 +25,7 @@ class OpinionsController < ApplicationController
   # POST /opinions.json
   def create
     @opinion = Opinion.new(opinion_params)
+    @opinion.user_id = current_user.id
 
     respond_to do |format|
       if @opinion.save
