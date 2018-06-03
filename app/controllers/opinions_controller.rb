@@ -1,6 +1,9 @@
 class OpinionsController < ApplicationController
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
+  access all: [:show, :index], user: {except: [:destroy,:edit]}, admin: :all
+
+
   # GET /opinions
   # GET /opinions.json
   def index

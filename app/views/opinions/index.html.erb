@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Opinions</h1>
 
@@ -7,6 +6,7 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>Owner</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +16,10 @@
       <tr>
         <td><%= opinion.title %></td>
         <td><%= opinion.body %></td>
+        <td><%= opinion.user.name %></td>
         <td><%= link_to 'Show', opinion %></td>
-        <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
-        <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_opinion_path(opinion) if logged_in?(:admin) %></td>
+        <td><%= link_to 'Destroy', opinion , method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:admin) %></td>
       </tr>
     <% end %>
   </tbody>
